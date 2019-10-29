@@ -2,25 +2,65 @@
 #include <string>
 #include <cctype>
 
-std::string removeLeadingSpaces(std::string line){
-char c;
-bool islead=true;
-std::string output=line;
-for(int i=0;i<line.length();i++){
-char c=line[i];
-if((isspace(c)||(c=='\t'))&&(islead)){
-   output.erase(0,1);}
-else{islead=false;}
+std::string removeLeadingSpaces (std::string line)
+{
+  int i = 0;
+  while (isspace (line[i]))
+    {
+      i++;
+    }
+
+  return line.substr (i);
 }
-return output;
-}
-int countChar(std::string line, char c){
-int count = 0;
-for(char match:line){
-	if(match == c){
-		count++;
+
+
+int
+countChar (std::string line, char c)
+{
+  int count = 0;
+for (char match:line)
+    {
+      if (match == c)
+	{
+	  count++;
 	}
+    }
+  return count;
 }
-return count;
+
+std::string indent (std::string line, int n)
+{
+  std::string result = "";
+
+  for (int i = 0; i < n; i++)
+    {
+      result += '\t';
+    }
+
+  return result + line;
+}
+
+std::string format(std::string line)
+{
+  line = removeLeadingSpaces (line);
+  static int count = 0;
+  std::string output;
+  if (countChar (line, '{') == 1)
+    {
+      output = indent (line, count);
+      count++;
+    }
+  else if (countChar (line, '}') == 1)
+    {
+      output = indent (line, count - 1);
+      count--;
+    }
+  else
+    {
+      output = indent (line, count);
+    }
+  output+='\n';
+
+  return output;
 }
 
