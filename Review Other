@@ -1,0 +1,15 @@
+David Cai Code Review by Vasyl Ilnytskyy
+
+    David's code lacks formatting making it tough to read and understand.
+His code also does not accomplish everything set out in this lab.
+
+    The removeLeadingSpaces function David coded also only partially works
+when the input is a string containing a single word as any string with multiple
+words only returns the first word.
+
+    I recommend David to find a coding style guide, like the one linked on the
+CSCI 135 website, to keep his workspace formatted and easy to assess. Additionally,
+I suggest David to create more tests for the functions he creates so he can build
+and improve upon them as he works through the lab. Finally, I recommend that if David
+finds a fault in his code that he comment it out instead of deleting it (ie indent)
+so that he has reference to what he can improve and move on from.
